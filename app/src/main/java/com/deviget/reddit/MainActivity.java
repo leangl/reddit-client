@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int PAGE_SIZE = 10;
     public static final String REDDIT_URI = "http://www.reddit.com";
     public static final String SAVED_ENTRIES = "ENTRIES";
+    public static final int POST_LIMIT = 50;
 
     private ArrayList<RedditPost> mPosts;
     private ListView mListView;
@@ -76,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
      * Fetches next page of posts or first if invoked for the first time
      */
     private void fetchNextPage() {
-        if (mCurrentApiRequest == null) { // prevent concurrent requests
+        if (mPosts.size() < POST_LIMIT // load top 50 posts only
+                && mCurrentApiRequest == null) { // Prevent concurrent requests being sent
             // Fetch next page (or first if after is null)
             String after = null;
             if (!mPosts.isEmpty()) {
