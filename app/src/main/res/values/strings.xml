@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Reddit</string>
+    <string name="loading">Loading Reddit posts...</string>
+    <string name="error">Error loading posts</string>
+</resources>
